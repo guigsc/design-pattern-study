@@ -1,4 +1,4 @@
-﻿using DesignPatternStudy.Creational.FactoryWithReflection.Loggers;
+﻿using DesignPatternStudy.Creational.FactoryWithReflection.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
@@ -8,21 +8,22 @@ namespace DesignPatternStudy.Creational.FactoryWithReflection
     {
         private static ServiceProvider _serviceProvider;
 
-        static void Main(string[] args)
+        static void Main()
         {
             RegisterServices();
 
-            Console.WriteLine("Which logger you would like to use: (MEMORY, FILE, DB, REMOTE_SERVICE");
+            Console.WriteLine("Which logger you would like to use: (InMemory, File, DB, RemoteService)");
+            
             string loggerMedium = Console.ReadLine();
 
             var factory = _serviceProvider.GetRequiredService<ILoggerFactory>();
-
+            
             try
             {
                 var logger = factory.CreateLogger(loggerMedium);
                 logger.Log("Logging");
             }
-            catch (NotSupportedException ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }

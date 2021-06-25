@@ -1,48 +1,27 @@
 ﻿using DesignPatternStudy.Creational.FactoryWithReflection.Decorators;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using DesignPatternStudy.Creational.FactoryWithReflection.Extensions;
+using DesignPatternStudy.Creational.FactoryWithReflection.Interfaces;
+using System;
+using System.Linq;
 
 namespace DesignPatternStudy.Creational.FactoryWithReflection
 {
     public class LoggerFactory : ILoggerFactory
     {
+        private const string LoggerMediumEmptyMessage = "Logger medium can not be null of empty";
+        private const string LoggerMediumNotFoundMessage = "Could not find a logger to create for logger medium: ";
+        private const string LoggerMediumAttributeName = "LoggerMedium";
+
         public ILogger CreateLogger(string loggerMedium) 
         {
             if (string.IsNullOrEmpty(loggerMedium))
-            {
-                string message = "Logger medium can not be null of empty";
-                throw new NotSupportedException(message);
-            }
+                throw new NotSupportedException(LoggerMediumEmptyMessage);
 
-            var types = typeof(ILogger).GetImplementations();
+            var type = typeof(ILogger).GetImplementations().FirstOrDefault(t => t.HasCustomAttribute<LoggerMediumAttribute>(LoggerMediumAttributeName, loggerMedium));
+            if (type == null)
+                throw new NotSupportedException($"{LoggerMediumNotFoundMessage}'{loggerMedium}'");
 
-            ILogger logger = FindLoggerInstance(types, loggerMedium);
-            
-            if (logger == null)
-            {
-                string message = $"Could not find a logger to create for logger medium: '{loggerMedium}'";
-                throw new NotSupportedException(message);
-            }
-
-            return logger;
-        }
-
-        private ILogger FindLoggerInstance(List<Type> types, string loggerMedium)
-        {
-            foreach (var type in types)
-            {
-                object[] customAttributes = type.GetCustomAttributes(typeof(LoggerMediumAttribute), false);
-                LoggerMediumAttribute attribute = (LoggerMediumAttribute)customAttributes.FirstOrDefault();
-
-                if (attribute != null && attribute.LoggerMedium == loggerMedium.ToUpperInvariant())
-                {
-                    return Activator.CreateInstance(type) as ILogger;
-                }
-            }
-
-            return null;
+            return Activator.CreateInstance(type) as ILogger;
         }
     }
 }
