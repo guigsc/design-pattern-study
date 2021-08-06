@@ -1,11 +1,10 @@
-﻿using DesignPatterStudy.Creational.Factory.Basic.Interfaces;
-using System;
+﻿using System;
 
 namespace DesignPatternStudy.Creational.Factory.Basic.Loggers
 {
-    public class DBLogger : ILogger
+    public class DBLogger : Logger
     {
-        public void Log(string message)
+        public override void Log(string message)
         {
             Console.WriteLine($"DB Logger: {message}");
         }
