@@ -16,11 +16,13 @@ namespace DesignPatternStudy.Creational.FactoryWithReflection.Extensions
                 .ToList();
         }
 
-        public static bool HasCustomAttribute<T>(this Type type, string comparisonProperty, string loggerMedium)
+        public static bool HasCustomAttribute<T>(this Type type, string loggerMedium) where T : Attribute
         {
             T attribute = (T)type.GetCustomAttributes(typeof(T), false).FirstOrDefault();
-            
-            var attributeProperty = attribute.GetType().GetProperty(comparisonProperty);
+
+            var attributeName = attribute.GetAttributeName();
+
+            var attributeProperty = attribute.GetType().GetProperty(attributeName);
             if (attributeProperty == null)
                 throw new ArgumentException(ComparisonPropertyNotFound);
 
