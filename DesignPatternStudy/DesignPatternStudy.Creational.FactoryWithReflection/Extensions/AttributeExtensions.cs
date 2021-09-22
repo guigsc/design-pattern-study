@@ -7,7 +7,7 @@ namespace DesignPatternStudy.Creational.FactoryWithReflection.Extensions
         public static string GetAttributeName(this Attribute attribute)
         {
             string fullAttributeName = attribute.GetType().Name;
-            return fullAttributeName.Substring(0, fullAttributeName.Length - 10);
+            return fullAttributeName.Substring(0, fullAttributeName.Length - 9);
         }
     }
 }
