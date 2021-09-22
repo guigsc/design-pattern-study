@@ -12,24 +12,8 @@ namespace DesignPatterStudy.Creational.Factory.Basic
 
             try
             {
-                string message = "Logging";
-                switch (loggerMedium)
-                {
-                    case "InMemory":
-                        Console.WriteLine($"In Memory Logger: {message}");
-                        break;
-                    case "File":
-                        Console.WriteLine($"File Logger: {message}");
-                        break;
-                    case "DB":
-                        Console.WriteLine($"DB Logger: {message}");
-                        break;
-                    case "RemoteService":
-                        Console.WriteLine($"Remote Service Logger: {message}");
-                        break;
-                    default:
-                        throw new NotSupportedException($"Could not find a logger to create for logger medium: '{loggerMedium}'");
-                }
+                var logger = new LoggerFactory().CreateLogger(loggerMedium);
+                logger.Log("Logging");
             }
             catch (Exception ex)
             {
