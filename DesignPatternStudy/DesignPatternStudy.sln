@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30204.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31606.5
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatternStudy.ConsoleApp", "DesignPatternStudy.ConsoleApp\DesignPatternStudy.ConsoleApp.csproj", "{F83D7662-F267-47B9-A1CA-FAE5E8840987}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatternStudy.Creational.Factory", "DesignPatternStudy.Creational.Factory\DesignPatternStudy.Creational.Factory.csproj", "{D883D3D5-5550-4B70-8605-B219730B821F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatternStudy.Creational.FactoryWithReflection", "DesignPatternStudy.Creational.FactoryWithReflection\DesignPatternStudy.Creational.FactoryWithReflection.csproj", "{3F0F5CDC-F873-4A38-BDEB-1818488D508B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterStudy.Creational.Factory.Basic", "DesignPatterStudy.Creational.Factory.Basic\DesignPatterStudy.Creational.Factory.Basic.csproj", "{91B4E561-0A71-4F41-B5FC-74C6EBDF6E13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterStudy.Creational.Factory.Basic", "DesignPatterStudy.Creational.Factory.Basic\DesignPatterStudy.Creational.Factory.Basic.csproj", "{91B4E561-0A71-4F41-B5FC-74C6EBDF6E13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F83D7662-F267-47B9-A1CA-FAE5E8840987}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F83D7662-F267-47B9-A1CA-FAE5E8840987}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F83D7662-F267-47B9-A1CA-FAE5E8840987}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F83D7662-F267-47B9-A1CA-FAE5E8840987}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D883D3D5-5550-4B70-8605-B219730B821F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D883D3D5-5550-4B70-8605-B219730B821F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D883D3D5-5550-4B70-8605-B219730B821F}.Release|Any CPU.ActiveCfg = Release|Any CPU
