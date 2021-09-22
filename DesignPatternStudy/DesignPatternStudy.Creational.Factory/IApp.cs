@@ -1,7 +1,7 @@
 ﻿namespace DesignPatternStudy.Creational.Factory
 {
-    public interface ILogger
+    public interface IApp
     {
-        void Log(string message);
+        void Run();
     }
 }

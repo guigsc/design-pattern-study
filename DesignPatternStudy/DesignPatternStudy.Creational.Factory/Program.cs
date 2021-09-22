@@ -6,33 +6,12 @@ namespace DesignPatternStudy.Creational.Factory
 {
     class Program
     {
-        // Factory is a creation design pattern which is used to create different implementation objects of the same type
-        //
-        // Example:
-        // If you have to design Logger API (class) which can log to different mediums like:
-        // - In memory data structure (MEMORY)
-        // - File on disk (FILE)
-        // - Database (DB)
-        // - Remote storage (REMOTE_SERVICE) 
-        //
-        // based on this article:
-        // https://medium.com/@kousiknath/design-patterns-different-approaches-to-use-factory-pattern-to-choose-objects-dynamically-at-run-71449bceecef
-        //
-        // and this one:
-        // https://medium.com/swlh/factory-pattern-without-switch-this-is-how-it-should-be-done-cd895e356f44
-
         private static ServiceProvider _serviceProvider;
 
         static void Main(string[] args)
         {
             RegisterServices();
-
-            Console.WriteLine("Which logger you would like to use: (MEMORY, FILE, DB, REMOTE_SERVICE");
-            string loggerMedium = Console.ReadLine();
-
-            var loggerFactory = _serviceProvider.GetRequiredService<ILoggerFactory>();
-            loggerFactory[loggerMedium].Log("message");
-
+            _serviceProvider.GetRequiredService<IApp>().Run();
             DisposeServices();
         }   
 
@@ -52,6 +31,7 @@ namespace DesignPatternStudy.Creational.Factory
 
                     return factory;
                 })
+                .AddSingleton<IApp, App>()
                 .BuildServiceProvider();
         }
 
