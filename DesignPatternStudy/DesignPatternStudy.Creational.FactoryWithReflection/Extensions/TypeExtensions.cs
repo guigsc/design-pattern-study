@@ -19,6 +19,7 @@ namespace DesignPatternStudy.Creational.FactoryWithReflection.Extensions
         public static bool HasCustomAttribute<T>(this Type type, string loggerMedium) where T : Attribute
         {
             T attribute = (T)type.GetCustomAttributes(typeof(T), false).FirstOrDefault();
+            if (attribute == null) return false;
 
             var attributeName = attribute.GetAttributeName();
 
@@ -26,7 +27,7 @@ namespace DesignPatternStudy.Creational.FactoryWithReflection.Extensions
             if (attributeProperty == null)
                 throw new ArgumentException(ComparisonPropertyNotFound);
 
-            return attribute != null && string.Compare(attributeProperty.GetValue(attribute).ToString(), loggerMedium, true) == 0;
+            return string.Compare(attributeProperty.GetValue(attribute).ToString(), loggerMedium, true) == 0;
         }
     }
 }
