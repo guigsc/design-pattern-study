@@ -1,25 +1,22 @@
 ﻿using DesignPatternStudy.Creational.FactoryWithReflection.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace DesignPatternStudy.Creational.FactoryWithReflection
 {
     class Program
     {
-        private static ServiceProvider _serviceProvider;
+        private static ServiceProvider _serviceProvider = RegisterServices();
 
         static void Main()
         {
-            RegisterServices();
-
             _serviceProvider.GetRequiredService<IApp>().Run();
 
             DisposeServices();
         }
 
-        private static void RegisterServices()
+        private static ServiceProvider RegisterServices()
         {
-            _serviceProvider = new ServiceCollection()
+            return _serviceProvider = new ServiceCollection()
                 .AddSingleton<ILoggerFactory, LoggerFactory>()
                 .AddSingleton<IApp, App>()
                 .BuildServiceProvider();

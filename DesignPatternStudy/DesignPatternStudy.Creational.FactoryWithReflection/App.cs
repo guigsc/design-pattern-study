@@ -16,12 +16,12 @@ namespace DesignPatternStudy.Creational.FactoryWithReflection
         {
             Console.WriteLine("Which logger you would like to use: (InMemory, File, DB, RemoteService)");
 
-            string loggerMedium = Console.ReadLine();
+            string loggerMedium = Console.ReadLine() ?? string.Empty;
 
             try
             {
                 var logger = loggerFactory.CreateLogger(loggerMedium);
-                logger.Log("Logging");
+                logger?.Log("Logging");
             }
             catch (Exception ex)
             {

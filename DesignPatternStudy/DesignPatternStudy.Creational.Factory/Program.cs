@@ -6,18 +6,17 @@ namespace DesignPatternStudy.Creational.Factory
 {
     class Program
     {
-        private static ServiceProvider _serviceProvider;
+        private static ServiceProvider _serviceProvider = RegisterServices();
 
         static void Main(string[] args)
         {
-            RegisterServices();
             _serviceProvider.GetRequiredService<IApp>().Run();
             DisposeServices();
         }   
 
-        private static void RegisterServices()
+        private static ServiceProvider RegisterServices()
         {
-            _serviceProvider = new ServiceCollection()
+            return new ServiceCollection()
                 .AddSingleton<ILoggerFactory>(_ =>
                 {
                     // Logic here to register loggers, so that it is possible to extend the factory without modifying it
@@ -38,14 +37,10 @@ namespace DesignPatternStudy.Creational.Factory
         private static void DisposeServices()
         {
             if (_serviceProvider == null)
-            {
                 return;
-            }
 
             if (_serviceProvider is IDisposable)
-            {
                 ((IDisposable)_serviceProvider).Dispose();
-            }
         }
     }
 }

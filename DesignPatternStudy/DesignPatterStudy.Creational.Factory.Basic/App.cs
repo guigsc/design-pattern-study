@@ -8,7 +8,7 @@ namespace DesignPatterStudy.Creational.Factory.Basic
         {
             Console.WriteLine("Which logger you would like to use: (InMemory, File, DB, RemoteService)");
 
-            string loggerMedium = Console.ReadLine();
+            string loggerMedium = Console.ReadLine() ?? string.Empty;
 
             try
             {

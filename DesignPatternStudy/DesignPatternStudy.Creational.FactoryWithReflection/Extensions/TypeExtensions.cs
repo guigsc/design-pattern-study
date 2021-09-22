@@ -1,9 +1,4 @@
-﻿using DesignPatternStudy.Creational.FactoryWithReflection.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace DesignPatternStudy.Creational.FactoryWithReflection.Extensions
+﻿namespace DesignPatternStudy.Creational.FactoryWithReflection.Extensions
 {
     public static class TypeExtensions
     {
@@ -18,7 +13,7 @@ namespace DesignPatternStudy.Creational.FactoryWithReflection.Extensions
 
         public static bool HasCustomAttribute<T>(this Type type, string loggerMedium) where T : Attribute
         {
-            T attribute = (T)type.GetCustomAttributes(typeof(T), false).FirstOrDefault();
+            T? attribute = type.GetCustomAttributes(typeof(T), false).FirstOrDefault() as T;
             if (attribute == null) return false;
 
             var attributeName = attribute.GetAttributeName();
@@ -27,7 +22,7 @@ namespace DesignPatternStudy.Creational.FactoryWithReflection.Extensions
             if (attributeProperty == null)
                 throw new ArgumentException(ComparisonPropertyNotFound);
 
-            return string.Compare(attributeProperty.GetValue(attribute).ToString(), loggerMedium, true) == 0;
+            return string.Compare(attributeProperty.GetValue(attribute)?.ToString(), loggerMedium, ignoreCase: true) == 0;
         }
     }
 }

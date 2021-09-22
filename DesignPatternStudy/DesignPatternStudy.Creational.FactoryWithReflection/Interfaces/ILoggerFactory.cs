@@ -2,6 +2,6 @@
 {
     public interface ILoggerFactory
     {
-        ILogger CreateLogger(string loggerMedium);
+        ILogger? CreateLogger(string loggerMedium);
     }
 }

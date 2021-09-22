@@ -14,7 +14,7 @@ namespace DesignPatternStudy.Creational.Factory
         public void Run()
         {
             Console.WriteLine("Which logger you would like to use: (MEMORY, FILE, DB, REMOTE_SERVICE");
-            string loggerMedium = Console.ReadLine();
+            string loggerMedium = Console.ReadLine() ?? string.Empty;
             loggerFactory[loggerMedium].Log("message");
         }
     }
