@@ -1,4 +1,4 @@
-﻿# Factory design pattern
+﻿# Factory design pattern without switch/cases
 
 Factory is a creation design pattern which is used to create different implementation objects of the same type
 
