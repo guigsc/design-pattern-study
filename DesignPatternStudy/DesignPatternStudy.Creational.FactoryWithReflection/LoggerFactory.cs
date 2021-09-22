@@ -14,7 +14,7 @@ namespace DesignPatternStudy.Creational.FactoryWithReflection
             if (string.IsNullOrEmpty(loggerMedium))
                 throw new LoggerMediumEmptyException();
 
-            var type = typeof(ILogger).GetImplementations().FirstOrDefault(t => t.HasCustomAttribute<LoggerMediumAttribute>(loggerMedium));
+            var type = typeof(ILogger).GetImplementations<ILogger>().FirstOrDefault(t => t.HasCustomAttribute<LoggerMediumAttribute>(loggerMedium));
             if (type == null)
                 throw new LoggerMediumNotFoundException(loggerMedium);
 

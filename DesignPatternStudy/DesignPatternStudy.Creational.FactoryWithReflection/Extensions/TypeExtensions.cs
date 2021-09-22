@@ -9,10 +9,10 @@ namespace DesignPatternStudy.Creational.FactoryWithReflection.Extensions
     {
         private const string ComparisonPropertyNotFound = "Comparison property does not exist on attribute class";
 
-        public static List<Type> GetImplementations(this Type type)
+        public static List<Type> GetImplementations<T>(this Type type)
         {
             return type.Assembly.GetTypes()
-                .Where(implementation => !implementation.IsAbstract && typeof(ILogger).IsAssignableFrom(implementation))
+                .Where(implementation => !implementation.IsAbstract && typeof(T).IsAssignableFrom(implementation))
                 .ToList();
         }
 
