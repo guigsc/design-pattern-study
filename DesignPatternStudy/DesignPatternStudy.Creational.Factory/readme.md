@@ -3,7 +3,7 @@
 Factory is a creation design pattern which is used to create different implementation objects of the same type
 
 ### Purpose
-This project tries to show an example of factory design patter without using switch/cases.
+This project tries to show an example of factory design pattern without using switch/cases.
 
 ### Project concept
 Design a logger API (class) which can log to different mediums like based on and string input:
