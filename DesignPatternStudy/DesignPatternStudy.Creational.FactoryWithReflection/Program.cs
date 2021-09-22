@@ -12,21 +12,7 @@ namespace DesignPatternStudy.Creational.FactoryWithReflection
         {
             RegisterServices();
 
-            Console.WriteLine("Which logger you would like to use: (InMemory, File, DB, RemoteService)");
-            
-            string loggerMedium = Console.ReadLine();
-
-            var factory = _serviceProvider.GetRequiredService<ILoggerFactory>();
-            
-            try
-            {
-                var logger = factory.CreateLogger(loggerMedium);
-                logger.Log("Logging");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            _serviceProvider.GetRequiredService<IApp>().Run();
 
             DisposeServices();
         }
@@ -35,6 +21,7 @@ namespace DesignPatternStudy.Creational.FactoryWithReflection
         {
             _serviceProvider = new ServiceCollection()
                 .AddSingleton<ILoggerFactory, LoggerFactory>()
+                .AddSingleton<IApp, App>()
                 .BuildServiceProvider();
         }
 
