@@ -9,7 +9,7 @@ namespace DesignPatternStudy.Creational.Factory
 
         public LoggerFactory()
         {
-            loggers = new Dictionary<string, Func<ILogger>>();
+            loggers = new();
         }
 
         public ILogger this[string loggerMedium] => CreateLogger(loggerMedium);
