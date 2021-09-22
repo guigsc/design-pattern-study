@@ -1,6 +1,6 @@
 ﻿# Factory design pattern (basic)
 
-Factory is a creation design pattern which is used to create different implementation objects of the same type
+Factory is a creational design pattern which is used to create different implementation objects of the same type
 
 ### Purpose
 This project tries to show an example of basic factory design pattern, using switch/cases.
